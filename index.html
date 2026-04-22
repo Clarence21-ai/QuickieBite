@@ -1,105 +1,53 @@
-body {
-    font-family: Arial, sans-serif;
-    margin: 0;
-    background: #fff5f5;
-}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>QuickBite</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
 
-/* HEADER */
-header {
-    background: #ff4d4d;
-    color: white;
-    padding: 15px;
-    text-align: center;
-    font-size: 18px;
-}
+<header>
+    <h1>🍔 QuickBite</h1>
+    <a href="cart.html">🛒 Cart</a>
+</header>
 
-/* MENU GRID (better spacing + responsive) */
-.menu {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
-    gap: 15px;
-    padding: 15px;
-}
+<div class="menu">
 
-/* ITEM CARD */
-.item {
-    background: white;
-    padding: 12px;
-    border-radius: 12px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-    text-align: center;
-    transition: 0.3s;
-}
+    <div class="item">
+        <img src="burger.jpg">
+        <h3>Burger</h3>
+        <p>₱50</p>
+        <p>Qty: <span id="Burger">0</span></p>
+        <button onclick="addToCart('Burger',50,'Burger')">Add</button>
+    </div>
 
-/* hover effect (optional nice touch) */
-.item:hover {
-    transform: scale(1.03);
-}
+    <div class="item">
+        <img src="fries.jpg">
+        <h3>Fries</h3>
+        <p>₱30</p>
+        <p>Qty: <span id="Fries">0</span></p>
+        <button onclick="addToCart('Fries',30,'Fries')">Add</button>
+    </div>
 
-/* IMAGE */
-.item img {
-    width: 100%;
-    height: 120px;
-    object-fit: cover;
-    border-radius: 10px;
-}
+    <div class="item">
+        <img src="pizza.jpg">
+        <h3>Pizza</h3>
+        <p>₱120</p>
+        <p>Qty: <span id="Pizza">0</span></p>
+        <button onclick="addToCart('Pizza',120,'Pizza')">Add</button>
+    </div>
 
-/* TEXT */
-h3 {
-    font-size: 16px;
-    margin: 8px 0 5px;
-}
+    <div class="item">
+        <img src="milk tea.jpg">
+        <h3>Milk Tea</h3>
+        <p>₱70</p>
+        <p>Qty: <span id="Milk Tea">0</span></p>
+        <button onclick="addToCart('Milk Tea',70,'Milk Tea')">Add</button>
+    </div>
 
-p {
-    font-size: 14px;
-    margin: 5px 0;
-}
+</div>
 
-/* BUTTON (bigger for phone tapping) */
-button {
-    background: #ff4d4d;
-    color: white;
-    border: none;
-    padding: 10px;
-    width: 100%;
-    margin-top: 8px;
-    border-radius: 8px;
-    font-size: 14px;
-    cursor: pointer;
-}
-
-button:hover {
-    background: #e60000;
-}
-
-/* CART BOX */
-.cart-box {
-    text-align: center;
-    background: white;
-    margin: 15px;
-    padding: 15px;
-    border-radius: 10px;
-    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-}
-
-/* MOBILE OPTIMIZATION */
-@media screen and (max-width: 600px) {
-    .menu {
-        grid-template-columns: repeat(2, 1fr);
-        gap: 10px;
-        padding: 10px;
-    }
-
-    .item {
-        padding: 10px;
-    }
-
-    button {
-        font-size: 13px;
-        padding: 9px;
-    }
-
-    header {
-        font-size: 16px;
-    }
-}
+<script src="script.js"></script>
+</body>
+</html>

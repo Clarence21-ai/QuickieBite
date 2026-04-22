@@ -1,46 +1,59 @@
-let cartItems = JSON.parse(localStorage.getItem("cart")) || [];
+let cart = JSON.parse(localStorage.getItem("cart")) || {};
 
-// ADD TO CART (silent)
-function addToCart(item, price, qtyId) {
-    let qty = document.getElementById(qtyId).value;
+// ADD TO CART (AUTO +1)
+function addToCart(item, price, id) {
 
-    cartItems.push({
-        name: item,
-        price: price,
-        qty: qty
-    });
+    if (!cart[item]) {
+        cart[item] = {
+            price: price,
+            qty: 0
+        };
+    }
 
-    localStorage.setItem("cart", JSON.stringify(cartItems));
+    cart[item].qty += 1;
+
+    localStorage.setItem("cart", JSON.stringify(cart));
+
+    // update number on menu page
+    let el = document.getElementById(id);
+    if (el) el.textContent = cart[item].qty;
+
+    updateCart();
 }
 
-// SHOW CART
-function displayCart() {
-    let cart = document.getElementById("cart");
+// SHOW CART (IMPORTANT FIX 🔥)
+function updateCart() {
+    let cartList = document.getElementById("cart");
+    if (!cartList) return;
+
+    cartList.innerHTML = "";
+
     let total = 0;
 
-    if (!cart) return;
+    for (let item in cart) {
 
-    cart.innerHTML = "";
+        let qty = cart[item].qty;
+        let price = cart[item].price;
 
-    cartItems.forEach((item) => {
-        let subtotal = item.price * item.qty;
+        let subtotal = qty * price;
 
         let li = document.createElement("li");
-        li.textContent = `${item.name} x${item.qty} = ₱${subtotal}`;
+        li.textContent = `${item} x${qty} = ₱${subtotal}`;
 
-        cart.appendChild(li);
+        cartList.appendChild(li);
 
         total += subtotal;
-    });
+    }
 
-    document.getElementById("total").textContent = total;
+    let totalEl = document.getElementById("total");
+    if (totalEl) totalEl.textContent = total;
 }
 
-// CHECKOUT (IMPORTANT FIX 🔥)
+// CHECKOUT
 function checkout() {
     localStorage.removeItem("cart");
     window.location.href = "thankyou.html";
 }
 
-// auto load cart page
-displayCart();
+// AUTO LOAD
+updateCart();

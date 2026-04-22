@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>QuickBite</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <h1>🍔 QuickieBite</h1>
+    <a href="cart.html" class="cart-link">🛒 View Cart</a>
+</header>
+
+<div class="menu">
+
+    <div class="item">
+        <img src="burger.jpg">
+        <h3>Burger</h3>
+        <p>₱50</p>
+        <input type="number" id="burgerQty" value="0">
+        <button onclick="addToCart('Burger', 50, 'burgerQty')">Add</button>
+    </div>
+
+    <div class="item">
+        <img src="fries.jpg">
+        <h3>Fries</h3>
+        <p>₱30</p>
+        <input type="number" id="friesQty" value="0">
+        <button onclick="addToCart('Fries', 30, 'friesQty')">Add</button>
+    </div>
+
+    <div class="item">
+        <img src="pizza.jpg">
+        <h3>Pizza</h3>
+        <p>₱120</p>
+        <input type="number" id="pizzaQty" value="0">
+        <button onclick="addToCart('Pizza', 120, 'pizzaQty')">Add</button>
+    </div>
+
+    <div class="item">
+        <img src="milk tea.jpg">
+        <h3>Milk Tea</h3>
+        <p>₱70</p>
+        <input type="number" id="milkQty" value="0">
+        <button onclick="addToCart('Milk Tea', 70, 'milkQty')">Add</button>
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
